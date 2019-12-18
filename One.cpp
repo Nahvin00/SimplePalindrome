@@ -5,6 +5,8 @@
 
 using namespace std;
 bool sentencePalindrome(string);
+bool comparePalindrome(string);
+void totalDisplay(int);
 
 int main()
 {
@@ -18,7 +20,7 @@ int main()
         total+=sentencePalindrome(word);
     }
     nameFileout.close();
-    cout<<"\nThe total number of palindromes is "<<total;
+    totalDisplay(total);
     return 0;
 }
 
@@ -43,9 +45,17 @@ bool sentencePalindrome(string str)
         }
 
         str[j] = '\0';
-        }
+        return comparePalindrome(str);
         
-    while (l <= h) { 
+    }
+} 
+
+bool comparePalindrome(string str)
+{
+    int l = 0, h = str.length(); 
+    for (int i = 0; i < h; i++)
+    {
+        while (l <= h) { 
         if (!(str[l] >= 'a' && str[l] <= 'z')) 
             l++; 
         else if (!(str[h] >= 'a' && str[h] <= 'z')) 
@@ -56,5 +66,11 @@ bool sentencePalindrome(string str)
             return false; 
     } 
     cout<<str<<endl;
-    return true; 
-} 
+    return true;
+    }
+}
+
+void totalDisplay(int total)
+{
+    cout<<"\nThe total number of palindromes is "<<total;
+}
